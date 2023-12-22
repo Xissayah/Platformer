@@ -1,0 +1,75 @@
+%% LyX 2.3.7 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[utf8]{inputenc}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\InputIfFileExists{t2aenc.def}{}{%
+  \errmessage{File `t2aenc.def' not found: Cyrillic script not supported}}
+\DeclareRobustCommand{\cyrtext}{%
+  \fontencoding{T2A}\selectfont\def\encodingdefault{T2A}}
+\DeclareRobustCommand{\textcyr}[1]{\leavevmode{\cyrtext #1}}
+
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+\title{Отчет по игре-платформеру для зачета по программированию}
+\maketitle
+\begin{enumerate}
+\item Создание персонажа
+\begin{itemize}
+\item Написан код для движения и прыжков, ограничения по высоте (проигрыш
+при падении), применения анимации
+\item С помощью Узла AnimatedSprite2D добавлены анимации Простоя, Прыжка
+и Бега
+\item Узлом CollisionShape2D добавлена коллизия (2 слоя: 1 - player, 2 -
+environment)
+\item Создана камера (Узел - Camera2D)
+\item К камере привязан ParallaxBackground с 4 картинками фона, которые
+движутся с разной скоростью
+\item В код добавлены кнопки для перезапуска игры (R) и выхода (Esc)
+\end{itemize}
+\item Создание игрового уровня
+\begin{itemize}
+\item На уровень был добавлен Персонаж (+фон) и Узел TileMap
+\item С помощью TileMap были созданы платформы с коллизией по которым перемещается
+персонаж
+\item При помощи Узла Area2D была создана дверь, касание которой является
+условием перехода на новый уровень
+\begin{itemize}
+\item сигнал body\_entered вызывает смену сцены на 2-ой уровень (Level2.tscn)
+\end{itemize}
+\item Также была добавлена фоновая музыка
+\end{itemize}
+\item Создание экранов Победы и Поражения
+\begin{itemize}
+\item Оба экрана сделаны по единому принципу, различаются лишь тексты на
+них и условия появления
+\item Был добавлен Узел Control
+\item К нему подключен TextureRect с фоном и CenterContainer (чтобы кнопки
+и текст были в 1 месте)
+\item К Контейнеру привязан VBoxContainer с Label'ом и HBoxContainer'ом
+\item К HBoxContainer'у привязаны 2 кнопки ``RESTART'' и ``EXIT'' сигналы
+которых перезапускают игру (переходят к сцене ``Level1.tscn'') или
+выходят из игры соответственно
+\end{itemize}
+\item Создание врагов (шипы)
+\begin{itemize}
+\item Создан узел Area2D со спрайтом шипов и коллизией
+\item К сигналу узла добавлен скрипт Поражения (переход к сцене ``GameOver.tscn'')
+\item Шипы были расставлены на уровнях
+\end{itemize}
+\item Создание 2-го уровня
+\begin{itemize}
+\item Копипаст из 1-го уровня Tilemap'a, двери, персонажа и шипов
+\item При помощи Tilemap'a построен 2-ой уровень, добавлены шипы и дверь
+\item При касании шипов или двери игра запускается заново (с 1-го уровня),
+двери - Игрок побеждает (переключение сцены на ``youWin.tscn'')
+\end{itemize}
+\end{enumerate}
+P. S. Музыка перенесена из Level1.tscn в Player.tscn
+\end{document}
