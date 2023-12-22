@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://yb65d5nvsgql"]
+
+[ext_resource type="Texture2D" uid="uid://b5ptt6xo8c51u" path="res://Assets+-+Little+Funny+Alien/Assets - Little Funny Alien/Graphics/Items/spikes.png" id="1_hit4y"]
+[ext_resource type="Script" path="res://spike.gd" id="1_j378e"]
+
+[node name="Spike" type="Area2D"]
+script = ExtResource("1_j378e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.890196, 0.317647, 0.396078, 1)
+texture = ExtResource("1_hit4y")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-24, 0, -35, 35, -35, 35, -4, 35, 26, 35, 35, 35, 23, 0, 12, 33, 0, -1, -11, 33)
+
+[connection signal="body_entered" from="." to="." method="_onBodyEntered"]

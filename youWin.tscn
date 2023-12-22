@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://b21me5lbddsv8"]
+
+[ext_resource type="Script" path="res://youWin.gd" id="1_vqxi6"]
+[ext_resource type="Texture2D" uid="uid://b4ry81vuljen3" path="res://Assets+-+Little+Funny+Alien/Assets - Little Funny Alien/Graphics/Backgrounds/background_1.png" id="1_y0pjl"]
+
+[node name="YouWin" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vqxi6")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_y0pjl")
+flip_h = true
+flip_v = true
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "CONGRATULATIONS
+YOU WIN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "RESTART (R)"
+
+[node name="Button2" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "EXIT (ESC)"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/Button" to="." method="_OnRestartButtonPressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/Button2" to="." method="_OnExitButtonPressed"]

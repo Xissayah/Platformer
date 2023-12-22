@@ -1,0 +1,162 @@
+[gd_scene load_steps=21 format=3 uid="uid://7irp128fane1"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_b3l02"]
+[ext_resource type="Texture2D" uid="uid://dpa5ghxjf6eqb" path="res://Assets+-+Little+Funny+Alien/Assets - Little Funny Alien/Graphics/Player/p3_walk/p3_walk08.png" id="2_wvxqb"]
+[ext_resource type="Texture2D" uid="uid://dblmxgfsvpnmm" path="res://Assets+-+Little+Funny+Alien/Assets - Little Funny Alien/Graphics/Player/p3_walk/p3_walk09.png" id="3_h12r6"]
+[ext_resource type="Texture2D" uid="uid://bstjajbnub1lu" path="res://Assets+-+Little+Funny+Alien/Assets - Little Funny Alien/Graphics/Player/p3_walk/p3_walk10.png" id="4_1uf6u"]
+[ext_resource type="Texture2D" uid="uid://c3ju1vvqqlua0" path="res://Assets+-+Little+Funny+Alien/Assets - Little Funny Alien/Graphics/Player/p3_jump.png" id="5_x3qng"]
+[ext_resource type="Texture2D" uid="uid://vmgl7ihhgb26" path="res://Assets+-+Little+Funny+Alien/Assets - Little Funny Alien/Graphics/Player/p3_walk/p3_walk01.png" id="6_0mv5e"]
+[ext_resource type="Texture2D" uid="uid://cma7m6uf8lkny" path="res://Assets+-+Little+Funny+Alien/Assets - Little Funny Alien/Graphics/Player/p3_walk/p3_walk02.png" id="7_vveeo"]
+[ext_resource type="Texture2D" uid="uid://dt5vwqiw80set" path="res://Assets+-+Little+Funny+Alien/Assets - Little Funny Alien/Graphics/Player/p3_walk/p3_walk03.png" id="8_tdbe0"]
+[ext_resource type="Texture2D" uid="uid://bdqyspteyedit" path="res://Assets+-+Little+Funny+Alien/Assets - Little Funny Alien/Graphics/Player/p3_walk/p3_walk04.png" id="9_4yt0w"]
+[ext_resource type="Texture2D" uid="uid://c3884id1seshh" path="res://Assets+-+Little+Funny+Alien/Assets - Little Funny Alien/Graphics/Player/p3_walk/p3_walk05.png" id="10_b222d"]
+[ext_resource type="Texture2D" uid="uid://chwxlmofa7mqt" path="res://Assets+-+Little+Funny+Alien/Assets - Little Funny Alien/Graphics/Player/p3_walk/p3_walk06.png" id="11_rish5"]
+[ext_resource type="Texture2D" uid="uid://bud14dxuto7xn" path="res://Assets+-+Little+Funny+Alien/Assets - Little Funny Alien/Graphics/Player/p3_walk/p3_walk07.png" id="12_cye14"]
+[ext_resource type="Texture2D" uid="uid://cswydvid8hrm0" path="res://Assets+-+Little+Funny+Alien/Assets - Little Funny Alien/Graphics/Player/p3_walk/p3_walk11.png" id="13_1ob1u"]
+[ext_resource type="Texture2D" uid="uid://b4ry81vuljen3" path="res://Assets+-+Little+Funny+Alien/Assets - Little Funny Alien/Graphics/Backgrounds/background_1.png" id="14_0skbe"]
+[ext_resource type="Texture2D" uid="uid://bfll646auor6v" path="res://Assets+-+Little+Funny+Alien/Assets - Little Funny Alien/Graphics/Backgrounds/background_2.png" id="15_7glkr"]
+[ext_resource type="Texture2D" uid="uid://dndm4n5k62u4v" path="res://Assets+-+Little+Funny+Alien/Assets - Little Funny Alien/Graphics/Backgrounds/background_3.png" id="16_yi6ag"]
+[ext_resource type="Texture2D" uid="uid://bt5qbnmo21ba2" path="res://Assets+-+Little+Funny+Alien/Assets - Little Funny Alien/Graphics/Backgrounds/background4.png" id="17_aft87"]
+[ext_resource type="AudioStream" uid="uid://uv56kboftjs8" path="res://Assets+-+Little+Funny+Alien/Assets - Little Funny Alien/Sounds/background_music.ogg" id="18_uq0dm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0lvr4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wvxqb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1uf6u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_h12r6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_x3qng")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_0mv5e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_vveeo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_tdbe0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_4yt0w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_b222d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_rish5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_cye14")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_wvxqb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_h12r6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1uf6u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_1ob1u")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 9.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tdqk1"]
+radius = 31.0
+height = 84.0
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(0, -3)
+collision_mask = 2
+script = ExtResource("1_b3l02")
+
+[node name="Animation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0lvr4")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.348756
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("CapsuleShape2D_tdqk1")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Camera2D"]
+scroll_ignore_camera_zoom = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Camera2D/ParallaxBackground"]
+position = Vector2(-1, 1)
+motion_mirroring = Vector2(2048, 2048)
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D/ParallaxBackground/ParallaxLayer"]
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 2049.0
+offset_bottom = 2047.0
+texture = ExtResource("14_0skbe")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Camera2D/ParallaxBackground"]
+position = Vector2(-1, 1)
+motion_scale = Vector2(0.25, 0.25)
+motion_offset = Vector2(0, -1024)
+motion_mirroring = Vector2(2048, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D/ParallaxBackground/ParallaxLayer2"]
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 2049.0
+offset_bottom = 2047.0
+texture = ExtResource("15_7glkr")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="Camera2D/ParallaxBackground"]
+position = Vector2(-1, 1)
+motion_scale = Vector2(0.5, 0.5)
+motion_offset = Vector2(0, -1024)
+motion_mirroring = Vector2(2048, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D/ParallaxBackground/ParallaxLayer3"]
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 2049.0
+offset_bottom = 2047.0
+texture = ExtResource("16_yi6ag")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="Camera2D/ParallaxBackground"]
+position = Vector2(-1, 1)
+motion_scale = Vector2(0.75, 0.75)
+motion_offset = Vector2(0, -1024)
+motion_mirroring = Vector2(2048, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D/ParallaxBackground/ParallaxLayer4"]
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 2049.0
+offset_bottom = 2047.0
+texture = ExtResource("17_aft87")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_uq0dm")
+volume_db = -15.928
+autoplay = true
